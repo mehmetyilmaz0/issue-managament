@@ -1,5 +1,6 @@
 package com.mehmetyilmaz.issuemanagement.service;
 
+import com.mehmetyilmaz.issuemanagement.dto.ProjectDTO;
 import com.mehmetyilmaz.issuemanagement.entity.Project;
 import com.mehmetyilmaz.issuemanagement.entity.User;
 import org.springframework.data.domain.Page;
@@ -14,7 +15,7 @@ public interface ProjectService {
 
     Project save(Project project);
 
-    Project getById(Long id);
+    ProjectDTO getById(Long id);
 
     List<Project> getByProjectCode (String projectCode);
 

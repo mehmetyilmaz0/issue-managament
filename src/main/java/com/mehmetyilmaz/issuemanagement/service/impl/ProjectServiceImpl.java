@@ -1,8 +1,10 @@
 package com.mehmetyilmaz.issuemanagement.service.impl;
 
+import com.mehmetyilmaz.issuemanagement.dto.ProjectDTO;
 import com.mehmetyilmaz.issuemanagement.entity.Project;
 import com.mehmetyilmaz.issuemanagement.repostory.ProjectRepostory;
 import com.mehmetyilmaz.issuemanagement.service.ProjectService;
+import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -13,9 +15,11 @@ import java.util.List;
 public class ProjectServiceImpl implements ProjectService {
 
     private final ProjectRepostory projectRepostory;
+    private final ModelMapper modelMapper;
 
-    public ProjectServiceImpl(ProjectRepostory projectRepostory) {
+    public ProjectServiceImpl(ProjectRepostory projectRepostory, ModelMapper modelMapper) {
         this.projectRepostory = projectRepostory;
+        this.modelMapper = modelMapper;
     }
 
     @Override
@@ -29,8 +33,11 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public Project getById(Long id) {
-        return projectRepostory.getOne(id);
+    public ProjectDTO getById(Long id) {
+        Project project = projectRepostory.getOne(id);
+        ProjectDTO projectDTO = modelMapper.map(project, ProjectDTO.class);
+
+        return projectDTO;
     }
 
     @Override
