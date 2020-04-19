@@ -14,7 +14,7 @@ import javax.validation.Valid;
 
 @RestController // bu class 'in bir rest contoller oldugunu etiketleyen bir anotation
 @RequestMapping(ApiPaths.ProjectCtrl.CTRL) // localhost:8080/project ile bu classin metodlarina ulasilmasi saglandi
-@Api(value = "Project APIs") // swagger ile dokumantasyonda gorulmesi icin kullanilan anotation. Controller'lari tanimlar.
+@Api(value = ApiPaths.ProjectCtrl.CTRL, description = "Project APIs") // swagger ile dokumantasyonda gorulmesi icin kullanilan anotation. Controller'lari tanimlar.
 public class ProjectController {
 
     private final ProjectServiceImpl projectServiceImpl;
