@@ -13,16 +13,17 @@ import java.util.List;
 // uygulamama ozel validasyonlarin olacagi katman..
 public interface ProjectService {
 
-    Project save(Project project);
+    ProjectDTO save(ProjectDTO projectDTO);
 
     ProjectDTO getById(Long id);
 
-    List<Project> getByProjectCode (String projectCode);
+    Project getByProjectCode (String projectCode);
 
     List<Project> getByProjectCodeContains (String projectCode);
 
     Page<Project> getAllPageable (Pageable pageable);
 
-    Boolean delete (Project project);
+    Boolean delete (Long id);
 
+    ProjectDTO update(Long id, ProjectDTO projectDTO);
 }

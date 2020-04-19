@@ -4,10 +4,9 @@ package com.mehmetyilmaz.issuemanagement.api;
 import com.mehmetyilmaz.issuemanagement.dto.ProjectDTO;
 import com.mehmetyilmaz.issuemanagement.service.impl.ProjectServiceImpl;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController // bu class 'in bir rest contoller oldugunu etiketleyen bir anotation
 @RequestMapping("/project") // localhost:8080/project ile bu classin metodlarina ulasilmasi saglandi
@@ -28,5 +27,21 @@ public class ProjectController {
         return ResponseEntity.ok(projectDTO);
     }
 
+    //RequestBody : create olacak data'lar request body uzerinden gidiyor
+    //Valid : ProjectDTO uzerinde tanimladigimiz validatitonlari calistirmasina yariyor.
+    @PostMapping()
+    public ResponseEntity<ProjectDTO> createProejct (@Valid @RequestBody ProjectDTO projectDTO) {
+        return ResponseEntity.ok(projectServiceImpl.save(projectDTO));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ProjectDTO> updateProject(@PathVariable("id") Long id, @Valid @RequestBody ProjectDTO projectDTO) {
+        return ResponseEntity.ok(projectServiceImpl.update(id, projectDTO));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Boolean> deleteProject (@PathVariable("id") Long id) {
+        return ResponseEntity.ok(projectServiceImpl.delete(id));
+    }
 
 }

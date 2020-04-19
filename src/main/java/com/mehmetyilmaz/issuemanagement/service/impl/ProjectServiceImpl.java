@@ -23,13 +23,17 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public Project save(Project project) {
+    public ProjectDTO save(ProjectDTO projectDTO) {
 
-        if (project.getProjectCode() == null) {
-            throw new IllegalArgumentException("Project Code Can Not Be Null !!");
-        }
+        Project checkProject = projectRepostory.getByProjectCode(projectDTO.getProjectCode());
+        if (checkProject != null)
+            throw new IllegalArgumentException("Duplicade project code!!! ");
 
-        return projectRepostory.save(project);
+        Project project = modelMapper.map(projectDTO, Project.class);
+        project = projectRepostory.save(project);
+        projectDTO.setId(project.getId());
+
+        return projectDTO;
     }
 
     @Override
@@ -41,7 +45,7 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public List<Project> getByProjectCode(String projectCode) {
+    public Project getByProjectCode(String projectCode) {
         return projectRepostory.getByProjectCode(projectCode);
     }
 
@@ -56,8 +60,26 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public Boolean delete(Project project) {
-        projectRepostory.delete(project);
+    public Boolean delete(Long id) {
+        projectRepostory.deleteById(id);
         return true;
+    }
+
+    @Override
+    public ProjectDTO update(Long id, ProjectDTO projectDTO) {
+        Project projectDB = projectRepostory.getOne(id);
+        if (projectDB == null)
+            throw new IllegalArgumentException("This Project Not Found in DB. ID : " + id);
+
+        Project checkProject = projectRepostory.getByProjectCode(projectDTO.getProjectCode());
+        if (checkProject != null && projectDB.getId().compareTo(id) != 0)
+            throw new IllegalArgumentException("Duplicade project code!!! ");
+
+        projectDB.setId(id);
+        projectDB.setProjectCode(projectDTO.getProjectCode());
+        projectDB.setProjectName(projectDTO.getProjectName());
+
+        projectRepostory.save(projectDB);
+        return modelMapper.map(projectDB, ProjectDTO.class);
     }
 }
