@@ -3,13 +3,14 @@ package com.mehmetyilmaz.issuemanagement.api;
 
 import com.mehmetyilmaz.issuemanagement.dto.ProjectDTO;
 import com.mehmetyilmaz.issuemanagement.service.impl.ProjectServiceImpl;
+import com.mehmetyilmaz.issuemanagement.util.ApiPaths;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
 @RestController // bu class 'in bir rest contoller oldugunu etiketleyen bir anotation
-@RequestMapping("/project") // localhost:8080/project ile bu classin metodlarina ulasilmasi saglandi
+@RequestMapping(ApiPaths.ProjectCtrl.CTRL) // localhost:8080/project ile bu classin metodlarina ulasilmasi saglandi
 public class ProjectController {
 
     private final ProjectServiceImpl projectServiceImpl;
