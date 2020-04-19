@@ -9,9 +9,11 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 
+@Service
 public class IssueServiceImpl implements IssueService {
 
     private final IssueRepostory issueRepostory;
@@ -38,7 +40,9 @@ public class IssueServiceImpl implements IssueService {
 
     @Override
     public IssueDTO getById(Long id) {
-        return null;
+        Issue issue = issueRepostory.getOne(id);
+        IssueDTO issueDTO = modelMapper.map(issue, IssueDTO.class);
+        return issueDTO;
     }
 
     @Override
@@ -53,7 +57,13 @@ public class IssueServiceImpl implements IssueService {
     }
 
     @Override
-    public Boolean delete(IssueDTO issue) {
+    public Boolean delete(Long id) {
+        issueRepostory.deleteById(id);
+        return true;
+    }
+
+    @Override
+    public IssueDTO update(Long id, IssueDTO issueDTO) {
         return null;
     }
 }

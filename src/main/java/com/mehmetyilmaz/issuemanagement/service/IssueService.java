@@ -18,5 +18,8 @@ public interface IssueService {
 
     TPage<IssueDTO> getAllPageable (Pageable pageable); // Spring 'in Page class ini kullanmadan kendi yarattigim TPage class i ile pagining yapmak istiyorum..
 
-    Boolean delete (IssueDTO issue);
+    Boolean delete (Long id);
+
+    IssueDTO update(Long id, IssueDTO issueDTO);
 }
+
