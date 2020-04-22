@@ -27,11 +27,11 @@ public class IssueManagementApplication {
 
 	// uygulama ayaga kalkerken test datalarini otomatik yuklesin diye projects.json ile birlikte yazildi.
 	// surekli data insert etmektense bu sekilde bir cozum bulundu. sonrasinda silebiliriz.
-	@Bean
-	public Jackson2RepositoryPopulatorFactoryBean populatorFactoryBean () {
-		Jackson2RepositoryPopulatorFactoryBean factoryBean = new Jackson2RepositoryPopulatorFactoryBean();
-		factoryBean.setResources(new Resource[]{ new ClassPathResource("projects.json")});
-		return factoryBean;
-	}
+//	@Bean
+//	public Jackson2RepositoryPopulatorFactoryBean populatorFactoryBean () {
+//		Jackson2RepositoryPopulatorFactoryBean factoryBean = new Jackson2RepositoryPopulatorFactoryBean();
+//		factoryBean.setResources(new Resource[]{ new ClassPathResource("projects.json")});
+//		return factoryBean;
+//	}
 
 }
