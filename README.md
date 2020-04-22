@@ -6,14 +6,14 @@
 - modalmapper download
 
 
-
-// "service"            : bussines logic imiz icin bu katmani yaptik
-// "repostory"          : data operasyonlarımız icin bu katmani yaptik
-// "entity"             : ORM nesnelerimiz olustugu tablodaki alanlarimiz var
-// "dto"                : disari yayinlayacagimiz api mizdaki alanlarin oldugu yer. (DataTransferObje)
-// "util.TPage"         : springin Page classini kullanmadan kendi TPage classi yarattik. Cunku modalmapper ile birlikte kullanabilmek icin.
-// "api"                : veritabanındaki verileri dışarı json formatında veri gondereceğimiz katman
-// "advice"             : exception lari yonettigim paket
+##----------------------
+- "service"            : bussines logic imiz icin bu katmani yaptik
+- "repostory"          : data operasyonlarımız icin bu katmani yaptik
+- "entity"             : ORM nesnelerimiz olustugu tablodaki alanlarimiz var
+- "dto"                : disari yayinlayacagimiz api mizdaki alanlarin oldugu yer. (DataTransferObje)
+- "util.TPage"         : springin Page classini kullanmadan kendi TPage classi yarattik. Cunku modalmapper ile birlikte kullanabilmek icin.
+- "api"                : veritabanındaki verileri dışarı json formatında veri gondereceğimiz katman
+- "advice"             : exception lari yonettigim paket
 
 
 
