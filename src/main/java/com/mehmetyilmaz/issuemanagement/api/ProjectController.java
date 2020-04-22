@@ -5,10 +5,12 @@ import com.mehmetyilmaz.issuemanagement.dto.ProjectDTO;
 import com.mehmetyilmaz.issuemanagement.entity.Project;
 import com.mehmetyilmaz.issuemanagement.service.impl.ProjectServiceImpl;
 import com.mehmetyilmaz.issuemanagement.util.ApiPaths;
+import com.mehmetyilmaz.issuemanagement.util.TPage;
 import com.sun.javafx.tools.packager.Log;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -58,6 +60,13 @@ public class ProjectController {
     @ApiOperation(value = "Delete Operatation", response = Boolean.class)
     public ResponseEntity<Boolean> deleteProject (@PathVariable("id") Long id) {
         return ResponseEntity.ok(projectServiceImpl.delete(id));
+    }
+
+    @GetMapping("/pagination")
+    @ApiOperation(value = "Get By Pagination Operatation", response = ProjectDTO.class)
+    public ResponseEntity<TPage<ProjectDTO>> getAllProjectByPagination (Pageable pageable) {
+        TPage<ProjectDTO> paginationData = projectServiceImpl.getAllPageable(pageable);
+        return ResponseEntity.ok(paginationData);
     }
 
 }

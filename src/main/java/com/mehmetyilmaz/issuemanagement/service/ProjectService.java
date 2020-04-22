@@ -3,6 +3,7 @@ package com.mehmetyilmaz.issuemanagement.service;
 import com.mehmetyilmaz.issuemanagement.dto.ProjectDTO;
 import com.mehmetyilmaz.issuemanagement.entity.Project;
 import com.mehmetyilmaz.issuemanagement.entity.User;
+import com.mehmetyilmaz.issuemanagement.util.TPage;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -21,7 +22,7 @@ public interface ProjectService {
 
     List<Project> getByProjectCodeContains (String projectCode);
 
-    Page<Project> getAllPageable (Pageable pageable);
+    TPage<ProjectDTO> getAllPageable (Pageable pageable);
 
     Boolean delete (Long id);
 
