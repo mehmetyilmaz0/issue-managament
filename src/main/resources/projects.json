@@ -1,0 +1,17 @@
+[
+  {
+    "_class": "com.mehmetyilmaz.issuemanagement.entity.Project",
+    "projectCode": "IM",
+    "projectName": "Issue Management Project"
+  },
+  {
+    "_class": "com.mehmetyilmaz.issuemanagement.entity.Project",
+    "projectCode": "ERP-S",
+    "projectName": "ERP Projects for Sales"
+  },
+  {
+    "_class": "com.mehmetyilmaz.issuemanagement.entity.Project",
+    "projectCode": "CRM-S",
+    "projectName": "CRM Projects for Sales"
+  }
+]
