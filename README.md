@@ -1,0 +1,11 @@
+# used technologies
+- java
+- spring boot
+- maven
+- tomcat
+- postgreSql
+- hibernate
+- restful
+- swagger2
+- jwt
+- angular
